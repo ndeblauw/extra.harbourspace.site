@@ -1,66 +1,63 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+    <a href="https://bluepundit.eu" target="_blank"><img src="https://bluepundit.eu/img/bluepundit-logo-pundit.png?1" height="100"></a><br>
+    <a href="https://harbour.space" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Harbour.Space_Logo_2.png/800px-Harbour.Space_Logo_2.png" height="100" alt="Laravel Logo"></a></p>
 
-## About Laravel
+## About Extra
+Extra is a project that is used to demonstrate how to use Laravel to build a web
+application.
+It belongs to the course MWA2 at [Harbour.Space University](https://harbour.space/).
+The lecturer is [Nico Deblauwe](https://bluepundit.eu).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The project is a simple application for sending invoices to customers.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requirements
+The project is built using the [TALL stack](https://tallstack.dev/), more specifically [Laravel 10](https://laravel.com) for the backend,
+with [Tailwind CSS](https://tailwindcss.com/)
+and [Alpine.js](https://alpinejs.dev/) for the frontend.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Tooling used for local development:
+- [Ray](https://myray.app) for sending debug info to a separate app (paid)
+- [Debugbar](https://github.com/barryvdh/laravel-debugbar) for displaying profiling data (free)
+- [Helo](https://usehelo.com/) for email testing
+- [Tinkerwell](https://tinkerwell.app/) for testing/debugging during development (paid)
 
-## Learning Laravel
+## Environment keys
+The following env keys (extra compared to a standard Laravel project) are used:
+- `FLARE_KEY` (go to [flareapp.io](https://flareapp.io/) to obtain a key - **not free**)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation instructions
+Clone the repository and install the dependencies:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```sh
+git clone https://github.com/ndeblauw/hsdemo.git
+composer install
+```
+Create a database and set the credentials in the .env file.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+(Re)generate the tables and seed with dummy data
+```sh
+php artisan migrate:fresh --seed
+```
+Set the application key
+```sh
+php artisan key:generate
+```
 
-## Laravel Sponsors
+### Development
+Make sure a (local) email testing service is running (e.g. Helo)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Production
+- It's better to use the **database driver for the queues** (and don't forget to configure a queue worker).
+- Don't forget to **set up the scheduler** (e.g. cron job) to run the schedule:run command every minute.
+- The scheduler comes with a **backup service**, don't forget to configure a remote S3 disk (or change the backup location) to have this working
 
 ## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Any pull request from a student that improves this code is welcomed.
 
 ## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability, please send an e-mail to Nico Deblauwe via [nico@bluepundit.eu](mailto:nico@bluepundit.eu).
+Security vulnerabilities will be promptly addressed.
 
 ## License
+This project can only be used for educational purposes, not limited in time, nor to any institution. There are no rights to use this code for any other purpose. Please reference the orginal repository if you use this code.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
