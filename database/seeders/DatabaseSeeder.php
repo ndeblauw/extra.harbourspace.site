@@ -16,12 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call([
+            CustomerSeeder::class,
+            UserSeeder::class,
+        ]);
 
         \App\Models\ProductType::create([
             'name' => 'domain',
@@ -50,5 +48,8 @@ class DatabaseSeeder extends Seeder
                 'invoice_id' => $invoice->id,
             ]);
         });
+
+
+    
     }
 }
