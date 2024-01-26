@@ -15,7 +15,7 @@ class Invoice extends Model
 
     public function invoiceLines()
     {
-        // return $this->hasMany(InvoiceLine::class);
+        return $this->hasMany(InvoiceLine::class);
     }
 
     public function customer()
@@ -24,8 +24,8 @@ class Invoice extends Model
     }
 
     public function price() {
-        // return $this->invoiceLines->sum(function ($invoiceLine) {
-        //     return $invoiceLine->price();
-        // });
+        return $this->invoiceLines->sum(function ($invoiceLine) {
+            return $invoiceLine->getTotal();
+        });
     }
 }
