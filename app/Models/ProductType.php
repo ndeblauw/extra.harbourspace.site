@@ -9,10 +9,17 @@ class ProductType extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'time_unit',
-        'price_in_cents',
+    protected $guarded = [
+        'id',
     ];
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function getPriceAttribute(): float
+    {
+        return $this->price_in_cents / 100;
+    }
 }

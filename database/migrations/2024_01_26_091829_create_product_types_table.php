@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('product_types', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('name', 100)->unique();
             $table->enum('time_unit', ['y', 'm', 'h'])->nullable();
             $table->bigInteger('price_in_cents')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
