@@ -4,29 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class InvoiceLine extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'invoice_id',
-        'product_id',
-        'quantity',
-    ];
+    protected $guarded = [];
 
-    public function invoice()
+    public function invoice(): BelongsTo
     {
         return $this->belongsTo(Invoice::class);
     }
 
-    public function getTotal()
+    public function getTotalPriceInCentsAttribute(): int
     {
-        return $this->quantity * $this->price;
+        return $this->quantity * $this->product->price_in_cents;
     }
 
-    public function getTotalFormatted()
+    public function getTotalPriceFormattedAttribute(): string
     {
-        return number_format($this->total, 2);
+        return number_format($this->getTotalPriceInCentsAttribute() / 100, 2);
     }
 }
