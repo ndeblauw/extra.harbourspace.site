@@ -32,9 +32,10 @@
             @endif
 
 
-        <div class="p-6 text-white-900">
-            <h1>Welcome to My Invoicing App</h1>
-    <p>This is the welcome page for my invoicing app. Start managing your invoices now!</p>
+            <div class="p-6 text-center text-gray-800 dark:text-white">
+                <h1 class="text-4xl font-bold mb-4">Welcome to My Invoicing App</h1>
+                <p class="text-lg">This is the welcome page  the invoicing app. Start managing your invoices now!</p>
+            </div>
         </div>
         </body>
         </html>
