@@ -11,11 +11,7 @@ class InvoiceLine extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'invoice_id',
-        'product_id',
-        'quantity',
-    ];
+    protected $guarded = [];
 
     public function invoice(): BelongsTo
     {
