@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('invoice_date');
             $table->foreignId('customer_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
