@@ -13,7 +13,6 @@ class InvoiceLine extends Model
         'invoice_id',
         'product_id',
         'quantity',
-        'price',
     ];
 
     public function invoice()
