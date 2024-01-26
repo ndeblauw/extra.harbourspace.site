@@ -18,6 +18,9 @@ return new class extends Migration {
             $table->string('phone_area_code')->nullable();
             $table->string('address')->nullable();
             $table->string('address2')->nullable();
+            $table->string('vat_number')->nullable();
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }
