@@ -21,14 +21,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Product::factory()->count(5)->create();
 
 
-         \App\Models\ProductType::factory()->create([
-             'name' => 'domain',
-             'time_unit' => 'y',
-             'price_in_cents' => 5000,
-         ]);
+        \App\Models\ProductType::factory()->create([
+            'name' => 'domain',
+            'time_unit' => 'y',
+            'price_in_cents' => 5000,
+        ]);
 
         \App\Models\ProductType::factory()->create([
             'name' => 'hosting',
@@ -41,5 +40,7 @@ class DatabaseSeeder extends Seeder
             'time_unit' => 'h',
             'price_in_cents' => 5000,
         ]);
+
+        Product::factory()->count(5)->create();
     }
 }
