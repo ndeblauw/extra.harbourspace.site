@@ -31,7 +31,7 @@ class Invoice extends Model
         });
     }
 
-    public function getTotalPriceInCentsFormattedAttribute() : string
+    public function getTotalPriceFormattedAttribute() : string
     {
         return number_format($this->getTotalPriceInCentsAttribute() / 100, 2);
     }

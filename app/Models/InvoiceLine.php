@@ -23,7 +23,7 @@ class InvoiceLine extends Model
         return $this->quantity * $this->product->price_in_cents;
     }
 
-    public function getTotalPriceInCentsFormattedAttribute(): string
+    public function getTotalPriceFormattedAttribute(): string
     {
         return number_format($this->getTotalPriceInCentsAttribute() / 100, 2);
     }
