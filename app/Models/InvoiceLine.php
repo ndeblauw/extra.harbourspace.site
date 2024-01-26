@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class InvoiceLine extends Model
 {
@@ -15,18 +16,18 @@ class InvoiceLine extends Model
         'quantity',
     ];
 
-    public function invoice()
+    public function invoice(): BelongsTo
     {
         return $this->belongsTo(Invoice::class);
     }
 
-    public function getTotal()
+    public function getTotalPriceInCentsAttribute(): int
     {
-        return $this->quantity * $this->price;
+        return $this->quantity * $this->product->price_in_cents;
     }
 
-    public function getTotalFormatted()
+    public function getTotalPriceInCentsFormattedAttribute(): string
     {
-        return number_format($this->total, 2);
+        return number_format($this->getTotalPriceInCentsAttribute() / 100, 2);
     }
 }
