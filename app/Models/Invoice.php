@@ -9,6 +9,10 @@ class Invoice extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'invoice_date',
+    ];
+
     public function invoiceLines()
     {
         // return $this->hasMany(InvoiceLine::class);
