@@ -4,20 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'product_type_id',
-        'name',
-        'price_in_cents',
-        'description',
-    ];
+    protected $guarded = ['id'];
 
-    public function product_type()
+    public function product_types()
     {
-        return $this->belongsTo(product_type::class);
+        return $this->belongsTo(ProductType::class);
+    }
+
+    public function getPriceAttribute(): float
+    {
+        return $this->price_in_cents / 100;
     }
 }
