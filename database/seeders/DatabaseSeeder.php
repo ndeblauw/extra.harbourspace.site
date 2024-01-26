@@ -48,8 +48,5 @@ class DatabaseSeeder extends Seeder
                 'invoice_id' => $invoice->id,
             ]);
         });
-
-
-
     }
 }

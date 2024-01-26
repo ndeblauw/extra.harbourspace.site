@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('name');
             $table->bigInteger('price_in_cents')->nullable();
             $table->string('description');
+
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('product_types_id')->references('id')->on('product_types');
         });
