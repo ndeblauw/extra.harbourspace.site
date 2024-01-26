@@ -24,10 +24,15 @@ class Invoice extends Model
         return $this->hasMany(InvoiceLine::class);
     }
 
-    public function price() : int
+    public function getTotalPriceInCentsAttribute() : int
     {
         return $this->invoiceLines->sum(function ($invoiceLine) {
-            return $invoiceLine->getTotal();
+            return $invoiceLine->totalPriceInCents;
         });
+    }
+
+    public function getTotalPriceInCentsFormattedAttribute() : string
+    {
+        return number_format($this->getTotalPriceInCentsAttribute() / 100, 2);
     }
 }
