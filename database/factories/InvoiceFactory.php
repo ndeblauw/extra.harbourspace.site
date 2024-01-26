@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,7 +17,10 @@ class InvoiceFactory extends Factory
      */
     public function definition(): array
     {
+        $cutomers = Customer::all();
+
         return [
+            'customer_id' => $cutomers->random()->id,
             'invoice_date' => $this->faker->date(),
         ];
     }
