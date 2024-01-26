@@ -33,8 +33,8 @@
 
 
             <div class="p-6 text-center text-gray-800 dark:text-white">
-                <h1 class="text-4xl font-bold mb-4">Welcome to My Invoicing App</h1>
-                <p class="text-lg">This is the welcome page  the invoicing app. Start managing your invoices now!</p>
+                <h1 class="text-4xl font-bold mb-4">Welcome to  the Invoicing App</h1>
+                <p class="text-lg">Start managing your invoices now!</p>
             </div>
         </div>
         </body>
