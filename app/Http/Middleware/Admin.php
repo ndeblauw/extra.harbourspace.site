@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use Auth;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,8 +16,7 @@ class Admin
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->user()->is_admin) {
-            Auth::guard('web')->logout();
-            return redirect()->back()->with('status', 'You are not authorized to access this aria.');
+            abort(403);
         }
 
         return $next($request);
