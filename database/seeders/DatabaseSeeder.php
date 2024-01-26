@@ -20,6 +20,26 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
         Product::factory()->count(5)->create();
+
+
+         \App\Models\ProductType::factory()->create([
+             'name' => 'domain',
+             'time_unit' => 'y',
+             'price_in_cents' => 5000,
+         ]);
+
+        \App\Models\ProductType::factory()->create([
+            'name' => 'hosting',
+            'time_unit' => 'm',
+            'price_in_cents' => 4000,
+        ]);
+
+        \App\Models\ProductType::factory()->create([
+            'name' => 'support',
+            'time_unit' => 'h',
+            'price_in_cents' => 5000,
+        ]);
     }
 }
