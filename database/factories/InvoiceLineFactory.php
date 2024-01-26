@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,7 +17,11 @@ class InvoiceLineFactory extends Factory
      */
     public function definition(): array
     {
+
+        $products = Product::all();
+
         return [
+            'product_id' => $products->random()->id,
             'quantity' => $this->faker->numberBetween(1, 10),
         ];
     }
