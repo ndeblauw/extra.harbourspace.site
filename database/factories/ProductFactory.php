@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ProductType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,15 +10,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ProductFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function definition(): array
     {
         return [
-            'product_types_id' => '1',
+            'product_type_id' => ProductType::factory(),
             'name' => $this->faker->name,
             'price_in_cents' => $this->faker->randomNumber(4),
             'description' => $this->faker->text,
