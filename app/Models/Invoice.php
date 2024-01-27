@@ -14,24 +14,24 @@ class Invoice extends Model
 
     protected $guarded = [];
 
-    public function customer() : BelongsTo
+    public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
     }
 
-    public function invoiceLines() : HasMany
+    public function invoiceLines(): HasMany
     {
         return $this->hasMany(InvoiceLine::class);
     }
 
-    public function getTotalPriceInCentsAttribute() : int
+    public function getTotalPriceInCentsAttribute(): int
     {
         return $this->invoiceLines->sum(function ($invoiceLine) {
             return $invoiceLine->totalPriceInCents;
         });
     }
 
-    public function getTotalPriceFormattedAttribute() : string
+    public function getTotalPriceFormattedAttribute(): string
     {
         return number_format($this->getTotalPriceInCentsAttribute() / 100, 2);
     }

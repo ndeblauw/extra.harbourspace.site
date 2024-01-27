@@ -20,10 +20,10 @@ class CustomerFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'phone' => fake()->phoneNumber(),
-            "phone_area_code" => fake()->countryCode,
-            "address" => fake()->address,
-            "address2" => fake()->secondaryAddress,
-            "vat_number" => fake()->randomNumber(8),
+            'phone_area_code' => fake()->countryCode,
+            'address' => fake()->address,
+            'address2' => fake()->secondaryAddress,
+            'vat_number' => fake()->randomNumber(8),
         ];
     }
 }
