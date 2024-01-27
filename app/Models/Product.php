@@ -12,11 +12,13 @@ class Product extends Model
 
     protected $guarded = ['id'];
 
+    // Model Relations ------------------------------------------------------
     public function product_types()
     {
         return $this->belongsTo(ProductType::class);
     }
 
+    // Model Methods --------------------------------------------------------
     public function getPriceAttribute(): float
     {
         return $this->price_in_cents / 100;

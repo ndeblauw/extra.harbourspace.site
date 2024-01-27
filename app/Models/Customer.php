@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
 class Customer extends Model
 {
     use HasFactory, SoftDeletes;
 
-
+    // Model Relations ------------------------------------------------------
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);
@@ -22,5 +21,4 @@ class Customer extends Model
     {
         return $this->hasMany(User::class);
     }
-
 }

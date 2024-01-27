@@ -13,11 +13,13 @@ class InvoiceLine extends Model
 
     protected $guarded = [];
 
+    // Model Relations ------------------------------------------------------
     public function invoice(): BelongsTo
     {
         return $this->belongsTo(Invoice::class);
     }
 
+    // Model methods --------------------------------------------------------
     public function getTotalPriceInCentsAttribute(): int
     {
         return $this->quantity * $this->product->price_in_cents;
