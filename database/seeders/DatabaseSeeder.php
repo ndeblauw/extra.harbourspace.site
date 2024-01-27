@@ -16,10 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            CustomerSeeder::class,
-            UserSeeder::class,
-        ]);
+        $users = User::factory(10)->create();
+        $customers = Customer::factory(10)->recycle($users)->create();
 
         \App\Models\ProductType::create([
             'name' => 'domain',
