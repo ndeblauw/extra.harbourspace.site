@@ -13,11 +13,13 @@ class ProductType extends Model
         'id',
     ];
 
+    // Model Relations ------------------------------------------------------
     public function products()
     {
         return $this->hasMany(Product::class);
     }
 
+    // Model Methods --------------------------------------------------------
     public function getPriceAttribute(): float
     {
         return $this->price_in_cents / 100;
